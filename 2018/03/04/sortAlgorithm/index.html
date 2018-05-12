@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="排序算法是最基本常用的算法，搞明白排序算法，不仅可以在实际的编程中灵活运用，也可以在面试的的时候大展身手。经典的排序算法有冒泡排序、插入排序、选择排序、希尔排序、堆排序、快速排序、归并排序等七种。 排序算法的分类： 按着时间复杂度（最好的情况，最坏的情况，平均的情况）分类，对于一个长度为n的线性表（list）。一般而言，好的性能是 O(nlogn)，坏的性能是 O(n2)。对于一个排序理想的性能是">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7种经典的排序算法">
+<meta property="og:url" content="qfmz.tech/2018/03/04/sortAlgorithm/index.html">
+<meta property="og:site_name" content="草长莺飞">
+<meta property="og:description" content="排序算法是最基本常用的算法，搞明白排序算法，不仅可以在实际的编程中灵活运用，也可以在面试的的时候大展身手。经典的排序算法有冒泡排序、插入排序、选择排序、希尔排序、堆排序、快速排序、归并排序等七种。 排序算法的分类： 按着时间复杂度（最好的情况，最坏的情况，平均的情况）分类，对于一个长度为n的线性表（list）。一般而言，好的性能是 O(nlogn)，坏的性能是 O(n2)。对于一个排序理想的性能是">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/images/sortInfo.jpg">
+<meta property="og:image" content="/images/Bubble_sort_animation.gif">
+<meta property="og:image" content="/images/Insertion-sort-example.gif">
+<meta property="og:image" content="/images/Selection-Sort-Animation.gif">
+<meta property="og:image" content="/images/Merge-sort-example.gif">
+<meta property="og:image" content="/images/Sorting_quicksort_anim.gif">
+<meta property="og:updated_time" content="2018-03-10T04:02:27.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7种经典的排序算法">
+<meta name="twitter:description" content="排序算法是最基本常用的算法，搞明白排序算法，不仅可以在实际的编程中灵活运用，也可以在面试的的时候大展身手。经典的排序算法有冒泡排序、插入排序、选择排序、希尔排序、堆排序、快速排序、归并排序等七种。 排序算法的分类： 按着时间复杂度（最好的情况，最坏的情况，平均的情况）分类，对于一个长度为n的线性表（list）。一般而言，好的性能是 O(nlogn)，坏的性能是 O(n2)。对于一个排序理想的性能是">
+<meta name="twitter:image" content="/images/sortInfo.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="qfmz.tech/2018/03/04/sortAlgorithm/"/>
+
+
+
+
+
+  <title>7种经典的排序算法 | 草长莺飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">草长莺飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">新的开始</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="qfmz.tech/2018/03/04/sortAlgorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草长莺飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7种经典的排序算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T23:26:25+08:00">
+                2018-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/04/sortAlgorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/04/sortAlgorithm/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>排序算法是最基本常用的算法，搞明白排序算法，不仅可以在实际的编程中灵活运用，也可以在面试的的时候大展身手。经典的排序算法有冒泡排序、插入排序、选择排序、希尔排序、堆排序、快速排序、归并排序等七种。</p>
+<h3 id="排序算法的分类："><a href="#排序算法的分类：" class="headerlink" title="排序算法的分类："></a>排序算法的分类：</h3><ul>
+<li>按着时间复杂度（最好的情况，最坏的情况，平均的情况）分类，对于一个长度为n的线性表（list）。一般而言，好的性能是 <strong>O(nlogn)</strong>，坏的性能是 <strong>O(n<sup>2</sup>)</strong>。对于一个排序理想的性能是<strong>O(n)</strong>，但平均而言不可能达到。基于比较的排序算法对大多数输入而言至少需要<strong>O(nlogn)</strong>。其中，(1)，<strong>冒泡排序</strong>和<strong>插入排序</strong>的<strong>最坏</strong>和<strong>平均</strong>时间复杂度都为<strong>O(n<sup>2</sup>)</strong>、<strong>最好</strong>的时间复杂度为<strong>O(n)</strong>。(2)，<strong>选择排序</strong>的<strong>最好、最坏、平均</strong>的时间复杂度都为<strong>O(n<sup>2</sup>)</strong> 。（3），<strong>堆排序</strong>和<strong>归并排序</strong>的<strong>最好、最坏、平均</strong>的时间复杂度都为<strong>O(nlogn)</strong>。(4)，<strong>快速排序</strong>的<strong>最好</strong>和<strong>平均</strong>情况情况下的时间复杂度为<strong>O(nlogn)</strong>，<strong>最坏</strong>情况下的时间复杂度为<strong>O(n<sup>2</sup>)</strong>。</li>
+<li>按着稳定性分类：<strong>稳定排序算法</strong>会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当有两个相等键值的纪录 R和 S，且在原本的列表中 R出现在  S之前，在排序过的列表中  R也将会是在  S之前。稳定的排序算法有<strong>冒、插、归、基</strong>。</li>
+<li>按着使用内存分类：归并排序需要线性辅助空间<strong>O(n)</strong>，快速排序需要<strong>O(logn)的辅助空间</strong>，其余的六种辅助空间都是<strong>O(1)</strong>。</li>
+</ul>
+<h3 id="七种经典排序算法指标对比情况如下："><a href="#七种经典排序算法指标对比情况如下：" class="headerlink" title="七种经典排序算法指标对比情况如下："></a>七种经典排序算法指标对比情况如下：</h3><p><img src="/images/sortInfo.jpg" alt="七种经典的排序算法对比" title="七种经典的排序算法比较"></p>
+<h3 id="一、冒泡排序-（Bubble-Sort）"><a href="#一、冒泡排序-（Bubble-Sort）" class="headerlink" title="一、冒泡排序 （Bubble Sort）"></a>一、冒泡排序 （Bubble Sort）</h3><p>冒泡排序是一种简单的排序算法。它重复的遍历要排序的线性表，每次比较相邻的元素，如果顺序错误就交换位置，因为排序的过程中较大的元素不断的被交换到线性表的顶端而得名冒泡排序。<br><img src="/images/Bubble_sort_animation.gif" alt="冒泡排序过程" title="冒泡排序过程"></p>
+<h4 id="冒泡排序算法的过程（数组的长度是N）："><a href="#冒泡排序算法的过程（数组的长度是N）：" class="headerlink" title="冒泡排序算法的过程（数组的长度是N）："></a>冒泡排序算法的过程（数组的长度是N）：</h4><ul>
+<li>1，比较相邻的前后二个数据，如果前面数据大于后面的数据，就将二个数据交换。</li>
+<li>2，这样对数组的第0个数据到N-1个数据进行一次遍历后，最大的一个数据就“沉”到数组第N-1个位置。</li>
+<li>3，N=N-1，如果N不为0就重复前面二步，否则排序完成。</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        bubbleSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void bubbleSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int t;</span><br><span class="line">        for (int i = 0; i &lt; a.length - 1; i++) &#123;</span><br><span class="line">            for (int j = 0; j &lt; a.length - i - 1; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="selector-tag">a</span>[j] &gt; <span class="selector-tag">a</span>[j+<span class="number">1</span>])&#123;</span><br><span class="line">                    t = a[j];</span><br><span class="line">                    a[j] = a[j+1];</span><br><span class="line">                    a[j+1] = t;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="改进的冒泡排序算法"><a href="#改进的冒泡排序算法" class="headerlink" title="改进的冒泡排序算法"></a>改进的冒泡排序算法</h4><p>设置一个标志变量，当某一趟不需要再交换的时候就是已经排序完成的时候，不需要再进行比较了。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        improvedBubbleSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void improvedBubbleSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int t;</span><br><span class="line">        boolean flag = true;</span><br><span class="line">        for (int i = 0; i &lt; a.length - 1 &amp;&amp; flag; i++) &#123;</span><br><span class="line">            flag = false;</span><br><span class="line">            for (int j = 0; j &lt; a.length - i - 1; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="selector-tag">a</span>[j] &gt; <span class="selector-tag">a</span>[j+<span class="number">1</span>])&#123;</span><br><span class="line">                    t = a[j];</span><br><span class="line">                    a[j] = a[j+1];</span><br><span class="line">                    a[j+1] = t;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、插入排序（Insertion-Sort）"><a href="#二、插入排序（Insertion-Sort）" class="headerlink" title="二、插入排序（Insertion Sort）"></a>二、插入排序（Insertion Sort）</h3><p>它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用<strong>in-place</strong>排序（即只需用到<strong>O(1)</strong>的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<p><img src="/images/Insertion-sort-example.gif" alt="插入排序过程" title="插入排序过程"></p>
+<h4 id="一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下："><a href="#一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：" class="headerlink" title="一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下："></a>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</h4><ul>
+<li>1,从第一个元素开始，该元素可以认为已经被排序</li>
+<li>2,取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
+<li>3,如果该元素（已排序）大于新元素，将该元素移到下一位置</li>
+<li>4,重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li>
+<li>5,将新元素插入到该位置后</li>
+<li>6,重复步骤2~5</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        insertionSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void insertionSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int j , value;</span><br><span class="line">        for (int i = 1; i &lt; a.length; i++) &#123;</span><br><span class="line">            value = a[i];</span><br><span class="line">            for (j = i-1; j &gt;= 0 &amp;&amp; a[j] &gt; value; j--) &#123;</span><br><span class="line">                    int t = a[j+1];</span><br><span class="line">                    a[j+1] = a[j];</span><br><span class="line">                    a[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">            a[j+1] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、选择排序（Selection-sort）"><a href="#三、选择排序（Selection-sort）" class="headerlink" title="三、选择排序（Selection sort）"></a>三、选择排序（Selection sort）</h3><p>它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。<br><img src="/images/Selection-Sort-Animation.gif" alt="选择排序过程" title="选择排序过程"></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line"><span class="comment">//        bubbleSort(a);</span></span><br><span class="line"><span class="comment">//        improvedBubbleSort(a);</span></span><br><span class="line"><span class="comment">//        insertionSort(a);</span></span><br><span class="line">        selectionSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void selectionSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int min ;</span><br><span class="line">        int k;</span><br><span class="line">        for (int i = 0; i &lt; a.length - 1; i++) &#123;</span><br><span class="line">            k = i;</span><br><span class="line">            min = a[i];</span><br><span class="line">            for (int j = i+1; j &lt; a.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="selector-tag">a</span>[j] &lt; min)&#123;</span><br><span class="line">                    min = a[j];</span><br><span class="line">                    k = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (k != i)&#123;</span><br><span class="line">                int t = a[k];</span><br><span class="line">                a[k] = a[i];</span><br><span class="line">                a[i] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="四，希尔排序"><a href="#四，希尔排序" class="headerlink" title="四，希尔排序"></a>四，希尔排序</h3><p>希尔排序也称递减增量排序算法，是插入排序的一种更高效的改进版本。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author cyy</span></span><br><span class="line"><span class="comment"> * @date 2018/3/7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        shellSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    public void shellSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int gap = 1;</span><br><span class="line">        while (gap &lt; <span class="selector-tag">a</span><span class="selector-class">.length</span> / <span class="number">3</span>)</span><br><span class="line">            gap = gap * 3 + 1; // &lt;O(n^(3/2)) by Knuth,1973&gt;: 1, 4, 13, 40, 121, ...</span><br><span class="line">        int m = gap;</span><br><span class="line">        for (m = gap ; m &gt; 0 ; m = m / 3)&#123;</span><br><span class="line">            gapSort(a,m);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void gapSort(int[] <span class="selector-tag">a</span>, int m) &#123;</span><br><span class="line">        int j , value;</span><br><span class="line">        for (int i = m; i &lt; a.length; i++) &#123;</span><br><span class="line">            value = a[i];</span><br><span class="line">            for (j = i-m; j &gt;= 0 &amp;&amp; a[j] &gt; value; j = j - m) &#123;</span><br><span class="line">                int t = a[j+m];</span><br><span class="line">                a[j+m] = a[j];</span><br><span class="line">                a[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">            a[j+m] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五，归并排序（Merge-Sort）"><a href="#五，归并排序（Merge-Sort）" class="headerlink" title="五，归并排序（Merge Sort）"></a>五，归并排序（Merge Sort）</h3><p>1945年由约翰·冯·诺伊曼首次提出。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。<br><img src="/images/Merge-sort-example.gif" alt="归并排序过程" title="归并排序过程"></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author cyy</span></span><br><span class="line"><span class="comment"> * @date 2018/3/7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        mergeSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void mergeSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int result[] = new int[a.length];</span><br><span class="line">        mergeSortMain(a,result,0,a.length-1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void mergeSortMain(int[] a, int[] result, int start, int end) &#123;</span><br><span class="line">        if (start &gt;= end)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int middle = (start + end) / 2;</span><br><span class="line">        mergeSortMain(a,result,start,middle);</span><br><span class="line">        mergeSortMain(a,result,middle+1,end);</span><br><span class="line">        merge(a,result,start,middle,end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void merge(int[] a, int[] result, int start, int middle, int end) &#123;</span><br><span class="line">        int i = start;</span><br><span class="line">        int j = middle + 1;</span><br><span class="line">        int k = 0;</span><br><span class="line">        while (i &lt;= middle &amp;&amp; j &lt;= end)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="selector-tag">a</span>[i] &lt;= <span class="selector-tag">a</span>[j])&#123;</span><br><span class="line">                result[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                result[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while (<span class="selector-tag">i</span> &lt;= middle)&#123;</span><br><span class="line">            result[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        while (j &lt;= end)&#123;</span><br><span class="line">            result[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        k = 0;</span><br><span class="line">        while (start &lt;= end)&#123;</span><br><span class="line">            a[start++] = result[k++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="归并排序非递归版本"><a href="#归并排序非递归版本" class="headerlink" title="归并排序非递归版本"></a>归并排序非递归版本</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author cyy</span></span><br><span class="line"><span class="comment"> * @date 2018/3/7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line"><span class="comment">//        bubbleSort(a);</span></span><br><span class="line"><span class="comment">//        improvedBubbleSort(a);</span></span><br><span class="line"><span class="comment">//        insertionSort(a);</span></span><br><span class="line"><span class="comment">//        selectionSort(a);</span></span><br><span class="line"><span class="comment">//        shellSort(a);</span></span><br><span class="line">        mergeSort2(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void mergeSort2(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        int result[] = new int[a.length];</span><br><span class="line">        for (int block = 1;block &lt; a.length ;block = block*2)&#123;</span><br><span class="line">            for (int i = 0; i &lt; a.length; i = i + block*2) &#123;</span><br><span class="line">                int start = i;</span><br><span class="line">                int end = start + block * 2 &lt; a.length ? start + block * 2 : a.length;</span><br><span class="line">                int middle = start + block &lt; a.length ? start + block : a.length;</span><br><span class="line">                merge(a,result,start,middle - 1,end - 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void merge(int[] a, int[] result, int start, int middle, int end) &#123;</span><br><span class="line">        int i = start;</span><br><span class="line">        int j = middle + 1;</span><br><span class="line">        int k = 0;</span><br><span class="line">        while (i &lt;= middle &amp;&amp; j &lt;= end)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="selector-tag">a</span>[i] &lt;= <span class="selector-tag">a</span>[j])&#123;</span><br><span class="line">                result[k++] = a[i++];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                result[k++] = a[j++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while (<span class="selector-tag">i</span> &lt;= middle)&#123;</span><br><span class="line">            result[k++] = a[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        while (j &lt;= end)&#123;</span><br><span class="line">            result[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        k = 0;</span><br><span class="line">        while (start &lt;= end)&#123;</span><br><span class="line">            a[start++] = result[k++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="六，快速排序（Quicksort）"><a href="#六，快速排序（Quicksort）" class="headerlink" title="六，快速排序（Quicksort）"></a>六，快速排序（Quicksort）</h3><p>又称划分交换排序（partition-exchange sort），简称快排，一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序 n个项目要(n log n)（大O符号）次比较。在最坏状况下则需要 n<sup>2</sup>次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 (nlog n)算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。<br><img src="/images/Sorting_quicksort_anim.gif" alt="快速排序过程" title="快速排序过程"></p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>快速排序采用“分而治之、各个击破”的观念，此为原地（In-place）分区版本。<br>快速排序使用分治法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。</p>
+<h4 id="步骤为："><a href="#步骤为：" class="headerlink" title="步骤为："></a>步骤为：</h4><ul>
+<li>1,从数列中挑出一个元素，称为”基准”（pivot），</li>
+<li>2,重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>3,递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+</ul>
+<p>递归到最底部时，数列的大小是零或一，也就是已经排序好了。这个算法一定会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author cyy</span></span><br><span class="line"><span class="comment"> * @date 2018/3/7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public class SortAlgorithm &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test()&#123;</span><br><span class="line">        int a[] = &#123;3,2,1,6,5,4,7,9,8&#125;;</span><br><span class="line">        quickSort(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line">    public void quickSort(int <span class="selector-tag">a</span>[])&#123;</span><br><span class="line">        quickSortRecrisive(a,0,a.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    public void quickSortRecrisive(int a[],int start,int end)&#123;</span><br><span class="line">        if (start &gt;= end)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int index = partition(a,start,end);</span><br><span class="line">        quickSortRecrisive(a,start,index-1);</span><br><span class="line">        quickSortRecrisive(a,index+1,end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int partition(int[] a, int start, int end) &#123;</span><br><span class="line">        int index = start + 1;</span><br><span class="line">        int value = a[start];</span><br><span class="line">        while (index &lt;= end)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="selector-tag">a</span>[index] &lt;= value)&#123;</span><br><span class="line">                a[start++] = a[index++];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                int t = a[index];</span><br><span class="line">                a[index] = a[end];</span><br><span class="line">                a[end] = t;</span><br><span class="line">                end--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[start] = value;</span><br><span class="line">        return start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/07/AddPictureForPage/" rel="prev" title="hexo添加本地图片到文章中">
+                hexo添加本地图片到文章中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="cyy" />
+            
+              <p class="site-author-name" itemprop="name">cyy</p>
+              <p class="site-description motion-element" itemprop="description">stay hungry stay foolish！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cyy3900" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:cyy3900@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序算法的分类："><span class="nav-number">1.</span> <span class="nav-text">排序算法的分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七种经典排序算法指标对比情况如下："><span class="nav-number">2.</span> <span class="nav-text">七种经典排序算法指标对比情况如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、冒泡排序-（Bubble-Sort）"><span class="nav-number">3.</span> <span class="nav-text">一、冒泡排序 （Bubble Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序算法的过程（数组的长度是N）："><span class="nav-number">3.1.</span> <span class="nav-text">冒泡排序算法的过程（数组的长度是N）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进的冒泡排序算法"><span class="nav-number">3.2.</span> <span class="nav-text">改进的冒泡排序算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、插入排序（Insertion-Sort）"><span class="nav-number">4.</span> <span class="nav-text">二、插入排序（Insertion Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下："><span class="nav-number">4.1.</span> <span class="nav-text">一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、选择排序（Selection-sort）"><span class="nav-number">5.</span> <span class="nav-text">三、选择排序（Selection sort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四，希尔排序"><span class="nav-number">6.</span> <span class="nav-text">四，希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五，归并排序（Merge-Sort）"><span class="nav-number">7.</span> <span class="nav-text">五，归并排序（Merge Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#归并排序非递归版本"><span class="nav-number">7.1.</span> <span class="nav-text">归并排序非递归版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六，快速排序（Quicksort）"><span class="nav-number">8.</span> <span class="nav-text">六，快速排序（Quicksort）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">8.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤为："><span class="nav-number">8.2.</span> <span class="nav-text">步骤为：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'cyy3900',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'f4a1dab800338aceeec71972fc3a409211f780db',
+            
+                client_id: 'b5a38568168ab09942df'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
